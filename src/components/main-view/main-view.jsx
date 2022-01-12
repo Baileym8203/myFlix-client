@@ -1,5 +1,7 @@
 import react from 'react';
 // this will import react
+import axios from 'axios';
+//this will import axios into main-view.jsx!
 import { MovieCard } from '../movie-card/movie-card';
 // this will import movie card from movie-card.jsx!
 import { MovieView } from '../movie-view/movie-view';
@@ -11,13 +13,21 @@ constructor() {
 super();
 
 this.state = {
-movies: [
-{_id: 1, Title: 'Inception', Description: 'description 1', ImagePath: '...'},
-{_id: 2, Title: 'The Shawshank Redemption', Description: 'description 2', ImagePath: '...'},
-{_id: 3, Title: 'Gladiator', Description: 'description 3', ImagePath: '...'}
-  ],
+movies: [],
  selectedMovie: null
- };
+ }
+}
+
+componentDidMount(){
+axios.get('https://bestmoviecentral.herokuapp.com/movies')
+.then(response => {
+this.setState({
+ movies: response.data
+ });
+})
+.catch(error => {
+ console.log(error);
+ });
 }
 
 setSelectedMovie(newSelectedMovie)  {
