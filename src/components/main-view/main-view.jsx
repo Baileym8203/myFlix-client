@@ -6,6 +6,8 @@ import { MovieCard } from '../movie-card/movie-card';
 // this will import movie card from movie-card.jsx!
 import { MovieView } from '../movie-view/movie-view';
 // this will import movie view from movie-view.jsx!
+import {LoginView} from '../login-view/login-view';
+// this will import login view from login-view.jsx!
 
 export class MainView extends react.Component {
 
@@ -14,8 +16,9 @@ super();
 
 this.state = {
 movies: [],
- selectedMovie: null
- }
+ selectedMovie: null,
+ user: null
+ };
 }
 
 componentDidMount(){
@@ -36,9 +39,31 @@ setSelectedMovie(newSelectedMovie)  {
      });
     }
 
+    onLoggedIn(user) {
+    this.setState({
+     user
+    });
+    }
+
+    /* When a user successfully logs in, this function updates the 
+    `user` property in state to that *particular user*/
+
     render() {
-        const { movies, selectedMovie } = this.state;
+        const { movies, selectedMovie, user } = this.state;
       
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          console.log(username, password);
+          /* Send a request to the server for authentication */
+        /* then call props.onLoggedIn(username) */
+           props.onLoggedIn(username);
+        };
+
+        if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    
+       /* If there is no user, the LoginView is rendered. If there is a user 
+        logged in, the user details are *passed as a prop to the LoginView*/
+
         if (movies.length === 0) return <div className="main-view" />;
       
         return (
@@ -52,9 +77,5 @@ setSelectedMovie(newSelectedMovie)  {
           </div>
         );
       }
-    componentWillUnmount(){
-    
-    }
-
     }
 
