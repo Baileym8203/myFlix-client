@@ -51,7 +51,7 @@ setSelectedMovie(newSelectedMovie)  {
     `user` property in state to that *particular user*/
 
     render() {
-        const { movies, selectedMovie, user } = this.state;
+      const { movies, selectedMovie, user } = this.state;
       
         const handleSubmit = (e) => {
           e.preventDefault();
