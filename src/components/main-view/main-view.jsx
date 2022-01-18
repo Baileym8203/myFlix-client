@@ -8,6 +8,8 @@ import { MovieView } from '../movie-view/movie-view';
 // this will import movie view from movie-view.jsx!
 import {LoginView} from '../login-view/login-view';
 // this will import login view from login-view.jsx!
+import { RegistrationView } from '../registration-view/registration-view';
+// this will import registration view from registration-view.jsx!
 
 export class MainView extends react.Component {
 
