@@ -1,12 +1,21 @@
 import react from 'react';
 import PropTypes from 'prop-types';
-
+import { Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 export class MovieCard extends react.Component {
 render() {
  const { movieData, onMovieClick } = this.props;
  
- return <div className="movie-card" onClick={() => { onMovieClick(movieData); }}>
-    {movieData.Title}</div>;
+ return (
+<Card>
+<Card.Img variant="top" src={movieData.ImagePath}/>
+<Card.Body>
+<Card.Title>{movieData.Title}</Card.Title>
+<Card.Text>{movieData.Description}</Card.Text>
+<Button onClick={() => onMovieClick(movieData)} variant="link">Open</Button>
+</Card.Body>
+</Card>
+ )
  };
 }
 // movie card proptypes must be in correct sequence order based on database information!
