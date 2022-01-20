@@ -80,8 +80,8 @@ setSelectedMovie(newSelectedMovie)  {
             
                 )
                 : movies.map(movie => (
-                <Col md={3}>
-                <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => 
+                <Col md={3} key={movie._id}>
+                <MovieCard  movieData={movie} onMovieClick={(movie) => 
                   { this.setSelectedMovie(movie) }}/>
                 </Col>
                 ))
