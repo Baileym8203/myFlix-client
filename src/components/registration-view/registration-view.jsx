@@ -37,14 +37,17 @@ if(isReq) {
 // send request to the server for authentication 
 axios.post('https://bestmoviecentral.herokuapp.com/user', {
 Username: username,
-Password: password
+Password: password,
+Email: email,
+Birthday: birthday
 })
 .then(response => {
 const data = response.data;
-props.onLoggedIn(data);
+console.log(data)
+window.open('/', '_self'); // the second arugument '_self is necessary so that the page page will open in the current tab  
 })
 .catch(e => {
-console.log('no such user')
+console.log('error registering the user')
   });
  }
 };

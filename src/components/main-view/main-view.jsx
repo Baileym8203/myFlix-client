@@ -3,7 +3,7 @@ import react from 'react';
 import axios from 'axios';
 //this will import axios into main-view.jsx!
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
 
 import { MovieCard } from '../movie-card/movie-card';
 // this will import movie card from movie-card.jsx!
@@ -80,11 +80,7 @@ console.log(error);
       const { movies, user } = this.state;
   
 
-        if (!user) return <Row>
-          <Col>
-          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
-          </Col>
-          </Row>
+       
     
        /* If there is no user, the LoginView is rendered. If there is a user 
         logged in, the user details are *passed as a prop to the LoginView*/
@@ -97,11 +93,20 @@ console.log(error);
           
           <Routes>
           <Route exact path="/" render={() => {
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
           return movies.map(m => (
           <Col md={3} key={m._id}>
           <MovieCard movie={m} />
           </Col>
            ))
+          }} />
+          <Route path="/register" render={() => {
+          if (user) return <Redirect to="/" /> 
+          return <Col>
+          <RegistrationView />
+          </Col>
           }} />
     
           <Route path="movies/:movieId" render={({ match, history }) => {
