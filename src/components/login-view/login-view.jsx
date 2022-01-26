@@ -1,7 +1,6 @@
 import react from 'react';
 import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { RegistrationView } from '../registration-view/registration-view';
 import { useState } from 'react'// this is needed for useState to be defined!
 import axios from 'axios';
 

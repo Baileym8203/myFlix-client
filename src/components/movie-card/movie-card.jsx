@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 export class MovieCard extends react.Component {
 render() {
- const {movieData} = this.props;
+ const {movieData, onMovieClick} = this.props;
  
  return (
 <Card>

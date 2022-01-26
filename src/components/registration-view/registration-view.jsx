@@ -1,6 +1,7 @@
-import react, { useState } from 'react';
+import react from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import { useState } from 'react';
 export function RegistrationView(props) {
 const [ username, setUsername ] = useState('');
 const [ password, setPassword ] = useState('');

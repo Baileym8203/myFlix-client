@@ -3,7 +3,7 @@ import react from 'react';
 import axios from 'axios';
 //this will import axios into main-view.jsx!
 
-import { BrowserRouter as Router, Route, Routes, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { MovieCard } from '../movie-card/movie-card';
 // this will import movie card from movie-card.jsx!
@@ -91,14 +91,13 @@ console.log(error);
           <Router>
           <Row className=" main-view justify-content-md-center">
           
-          <Routes>
           <Route exact path="/" render={() => {
           if (!user) return <Col>
           <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
           </Col>
           return movies.map(m => (
           <Col md={3} key={m._id}>
-          <MovieCard movie={m} />
+          <MovieCard movie={m}  />
           </Col>
            ))
           }} />
@@ -131,7 +130,6 @@ console.log(error);
             match.params.Name).Genre} onBackClick={() => history.goBack()} />
           </Col>
           }} />
-           </Routes>
            </Row>
           </Router>
          
