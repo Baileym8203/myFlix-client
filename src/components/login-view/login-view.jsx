@@ -3,6 +3,7 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { RegistrationView } from '../registration-view/registration-view';
 import { useState } from 'react'// this is needed for useState to be defined!
+import axios from 'axios';
 
  export function LoginView(props) {
  const [username, setUsername] = useState('');
@@ -10,10 +11,19 @@ import { useState } from 'react'// this is needed for useState to be defined!
 
  const handleSubmit = (e) => {
  e.preventDefault();
- console.log(username, password);
- //send a request to the server for authentication, then call props.onLoggedIn(username)
- props.onLoggedIn(username);
- };
+ /* Send a request to the server for authentication */
+ axios.post('https://bestmoviecentral.herokuapp.com/login', {
+ Username: username,
+ Password: password
+ })
+ .then(response => {
+const data = response.data;
+props.onLoggedIn(data);
+ })
+ .catch(e => {
+ console.log('no such user')
+ });
+};
 
  return (
     <Form>

@@ -1,8 +1,76 @@
-import react from 'react';
+import react, { useState } from 'react';
 import axios from 'axios';
-export class RegistrationView extends react.Component {
+import { Button } from 'react-bootstrap';
+export function RegistrationView(props) {
+const [ username, setUsername ] = useState('');
+const [ password, setPassword ] = useState('');
+// Declare hook for each input
+const [ usernameErr, setUsernameErr ] = useState('');
+const [ passwordErr, setPasswordErr ] = useState('');
 
-constructor(props) {
+// validate user inputs 
+const validate = () => {
+ let isReq = true;
+ if(!username){
+ setUsernameErr('Username Required');
+ isReq = false;
+ } else if(username.length < 2) {
+ setUsernameErr('Username must be 6 characters long');
+ isReq = false;
+ }
+ if(!password) {
+ setPasswordErr('password required');
+ isReq = false;
+ } else if(password.length < 6) {
+ setPassword('Password must be 6 characters long');
+ isReq = false;
+  }
+
+  return isReq;
+
+}
+
+const handleSubmit = (e) => {
+e.preventDefault();
+const isReq = validate();
+if(isReq) {
+// send request to the server for authentication 
+axios.post('https://bestmoviecentral.herokuapp.com/user', {
+Username: username,
+Password: password
+})
+.then(response => {
+const data = response.data;
+props.onLoggedIn(data);
+})
+.catch(e => {
+console.log('no such user')
+  });
+ }
+};
+
+return (
+       <Form>
+         <Form.Group controlId="formUsername">
+           <Form.Label>Username:</Form.Label>
+           <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+           {/* code added here to display validation error */}
+           {usernameErr && <p>{usernameErr}</p>}
+   </Form.Group>
+   
+         <Form.Group controlId="formPassword">
+           <Form.Label>Password</Form.Label>
+           <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+           {/* code added here to display validation error */}
+           {passwordErr && <p>{passwordErr}</p>}
+   </Form.Group>
+         <Button variant="primary" type="submit" onClick={handleSubmit}>
+           Submit
+           </Button>
+       </Form>
+     )
+}
+/*constructor(props) {
 super(props);
 
 this.state = {
@@ -82,4 +150,4 @@ return (
  }
 }
 
-export default RegistrationView
+*/ //export default RegistrationView 

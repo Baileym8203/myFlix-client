@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-router-dom';
 export class MovieView extends React.Component {
   
   /*keypressCallback(event) {
@@ -31,31 +33,13 @@ export class MovieView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
-        <div className ="movie-genre-name">
-        <span className="label">Name: </span>
-        <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-genre-description">
-        <span className="label">Description: </span>
-        <span className="value">{movie.Genre.Description}</span>
-        </div>
-        <div className="movie-director-name">
-        <span className="label">Name: </span>
-        <span className="value">{movie.Director.Name}</span>
-        </div>
-        <div className="movie-director-bio">
-        <span className="label">Bio: </span>
-        <span className="value">{movie.Director.Bio}</span>
-        </div>
-        <div className="movie-director-birth">
-        <span className="label">Birth: </span>
-        <span className="value">{movie.Director.Birth}</span>
-        </div>
-        <div className="movie-director-death">
-        <span className="label">Death: </span>
-        <span className="value">{movie.Director.Death}</span>
-        </div>
-        <button onClick={() => { onBackClick(null); }}>Back</button>
+        <Link to={`/genres/${movie.Genre.Name}`}>
+        <Button variant="link">Genre</Button>
+        </Link>
+        <Link to={`/directors/${movie.Director.Name}`}>
+        <Button variant="link">Director</Button>
+        </Link>
+        <button onClick={() => { onBackClick(); }}>Back</button>
        </div>
     );
   }
