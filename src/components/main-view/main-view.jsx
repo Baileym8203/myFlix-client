@@ -85,7 +85,6 @@ console.log(error);
        /* If there is no user, the LoginView is rendered. If there is a user 
         logged in, the user details are *passed as a prop to the LoginView*/
 
-        if (movies.length === 0) return <div className="main-view" />;
       
         return (
           <Router>
@@ -97,7 +96,7 @@ console.log(error);
           </Col>
           return movies.map(m => (
           <Col md={3} key={m._id}>
-          <MovieCard movie={m}  />
+          <MovieCard movieData={m}  />
           </Col>
            ))
           }} />

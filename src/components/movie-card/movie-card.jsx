@@ -13,7 +13,7 @@ render() {
 <Card.Body>
 <Card.Title>{movieData.Title}</Card.Title>
 <Card.Text>{movieData.Description}</Card.Text>
-<Link to={`/movies/${movie_id}`}>
+<Link to={`/movies/${movieData._id}`}>
 <Button variant="link">Open</Button>
 </Link>
 </Card.Body>

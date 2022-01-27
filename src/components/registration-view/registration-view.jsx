@@ -2,9 +2,13 @@ import react from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+
 export function RegistrationView(props) {
 const [ username, setUsername ] = useState('');
 const [ password, setPassword ] = useState('');
+const [email, setEmail] = useState('');
+const [birthday, setbirthday] = useState('');
 // Declare hook for each input
 const [ usernameErr, setUsernameErr ] = useState('');
 const [ passwordErr, setPasswordErr ] = useState('');
