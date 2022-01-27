@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 export class MovieCard extends react.Component {
 render() {
- const {movieData, onMovieClick} = this.props;
+ const {movieData} = this.props;
  
  return (
 <Card>
@@ -13,7 +13,7 @@ render() {
 <Card.Body>
 <Card.Title>{movieData.Title}</Card.Title>
 <Card.Text>{movieData.Description}</Card.Text>
-<Link to={`/movies/${movie_id}`}>
+<Link to={`/movies/${movieData._id}`}>
 <Button variant="link">Open</Button>
 </Link>
 </Card.Body>
@@ -37,6 +37,5 @@ movieData: PropTypes.shape({
  ImagePath: PropTypes.string.isRequired
 })
  })
-}).isRequired,
-onMovieClick: PropTypes.func.isRequired
+}).isRequired
 };
