@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 export class MovieCard extends react.Component {
 render() {
- const {movieData, onMovieClick} = this.props;
+ const {movieData} = this.props;
  
  return (
 <Card>
@@ -37,6 +37,5 @@ movieData: PropTypes.shape({
  ImagePath: PropTypes.string.isRequired
 })
  })
-}).isRequired,
-onMovieClick: PropTypes.func.isRequired
+}).isRequired
 };

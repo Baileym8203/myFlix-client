@@ -13,6 +13,8 @@ import {LoginView} from '../login-view/login-view';
 // this will import login view from login-view.jsx!
 import { RegistrationView } from '../registration-view/registration-view';
 
+import { GenreView } from '../genre-view/genre-view';
+
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 // both import react components from react bootstrap!
@@ -107,7 +109,11 @@ console.log(error);
           </Col>
           }} />
     
-          <Route path="movies/:movieId" render={({ match, history }) => {
+          <Route path="/movies/:movieId" render={({ match, history }) => {
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+
           return <Col md={8}>
           <MovieView movie={movies.find(m => m._id === match.params.movieId)} 
           onBackClick={() => history.goBack()} />
@@ -115,7 +121,11 @@ console.log(error);
           }} />
 
           <Route path="/directors/:name" render={({ match, history }) => {
-          if (movies.length === 0) return <div className ="main-view" />;
+          
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+
           return <Col md={8}>
           <DirectorView director={movies.find(m => m.Director.Name === 
             match.params.Name).Director} onBackClick={() => history.goBack()} />
@@ -123,10 +133,13 @@ console.log(error);
           }} />
 
           <Route path="/genres/:name" render={({ match, history }) => {
-          if (movies.length === 0) return <div className ="main-view" />;
+          
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+
           return <Col md={8}>
-          <GenreView genre={movies.find(m => m.Genre.Name === 
-            match.params.Name).Genre} onBackClick={() => history.goBack()} />
+          <GenreView genreName={match.params.name} onBackClick={() => history.goBack()} />
           </Col>
           }} />
            </Row>
