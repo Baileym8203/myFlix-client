@@ -1,8 +1,43 @@
-import React from 'react';
-import {Button} from 'react-bootstrap/Button'
-import {Form} from 'react-bootstrap/Form'
+import React, {useState} from 'react';
+import {Button} from 'react-bootstrap/';
+import {Form} from 'react-bootstrap/';
+import axios from 'axios';
 
- function UpdateUser({handleSubmit, handleUpdate}){
+ function UpdateUser({handleUpdate, user}){
+  const [userName, setUsername] = useState(user.Username) ;
+  const [email, setEmail] = useState(user.Email);
+  const [password, setPassword] = useState(user.Password);
+
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  let token = localStorage.getItem('token');
+  console.log(token);
+  
+  if (token && userName && userName !== "") {
+  axios.put("https://bestmoviecentral.herokuapp.com/users/" + user.Username, 
+  {
+  Username: userName,
+  Email: email,
+  Password: password,
+  },
+  {
+  headers: {Authorization: `bearer ${token}`},
+   }
+  )
+  .then((response => {
+  handleUpdate(response.data);
+  }))
+  .catch(function (error){
+   console.log(error);
+  });
+  
+ }
+
+};
+        
+        
+if (!user) return <p>Not user data</p>;
+        
         return (
 <>
 <h4>Update</h4>
@@ -11,8 +46,8 @@ import {Form} from 'react-bootstrap/Form'
 <Form.Label>Username:</Form.Label>
 <Form.Control
 type='text'
-defaultValue={User.Username}
-onChange={e => handleUpdate(e)}
+defaultValue={user.Username}
+onChange={(e) => setUsername(e.target.value)}
 required
 placeholder='Enter a username' 
 />
@@ -23,7 +58,7 @@ placeholder='Enter a username'
 <Form.Control
 type='password'
 defaultValue=''
-onChange={e => handleUpdate(e)}
+onChange={(e) => setPassword(e.target.value)}
 required
 minLength="8"
 placeholder="your password must be 8 or more characters"
@@ -35,7 +70,7 @@ placeholder="your password must be 8 or more characters"
 <Form.Control
 type='email'
 defaultValue={user.Email}
-onChange={e => handleUpdate(e)}
+onChange={(e) => setEmail(e.target.value)}
 required
 placeholder='Enter your email address'
 />
