@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 export class MovieView extends React.Component {
   
   /*keypressCallback(event) {
@@ -19,8 +19,9 @@ export class MovieView extends React.Component {
   // this isn't important to the project!
   render() {
     const { movie, onBackClick} = this.props;
-  
+   if(!movie) return <p>Loading</p>
     return (
+      
       <div className="movie-view">
         <div className="movie-poster">
           <img src={movie.ImagePath} />

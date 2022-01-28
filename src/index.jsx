@@ -12,11 +12,9 @@ import './index.scss';
 class myFlixApplication extends react.Component {
 render() {
 return (
-  <Container>
-
+<Container>
 <MainView />
   </Container>
-  
   ); 
  }
 }

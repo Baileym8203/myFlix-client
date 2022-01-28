@@ -2,12 +2,18 @@ import react from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
+import { Form } from 'react-bootstrap';
 export function RegistrationView(props) {
 const [ username, setUsername ] = useState('');
 const [ password, setPassword ] = useState('');
+const [email, setEmail] = useState('')
+const [birthday, setBirthday] = useState('');
+
 // Declare hook for each input
 const [ usernameErr, setUsernameErr ] = useState('');
 const [ passwordErr, setPasswordErr ] = useState('');
+const [emailErr, setEmailErr] = useState('');
+const [birthdayErr, setBirthdayErr] = useState('');
 
 // validate user inputs 
 const validate = () => {
@@ -26,6 +32,15 @@ const validate = () => {
  setPassword('Password must be 6 characters long');
  isReq = false;
   }
+if(!email) {
+setEmailErr('Email required');
+isReq = false;
+}
+if(!birthday) {
+setBirthdayErr('Birthday required');
+isReq = false;
+}
+
 
   return isReq;
 
@@ -36,7 +51,7 @@ e.preventDefault();
 const isReq = validate();
 if(isReq) {
 // send request to the server for authentication 
-axios.post('https://bestmoviecentral.herokuapp.com/user', {
+axios.post('https://bestmoviecentral.herokuapp.com/users', {
 Username: username,
 Password: password,
 Email: email,
@@ -68,90 +83,21 @@ return (
            {/* code added here to display validation error */}
            {passwordErr && <p>{passwordErr}</p>}
    </Form.Group>
+       <Form.Group controlId="formEmail">
+         <Form.Label>Email</Form.Label>
+         <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
+       {/* code added here to display validation error */}
+       {emailErr && <p>{emailErr}</p>}
+       </Form.Group>
+       <Form.Group>
+        <Form.Label>Birthday</Form.Label>
+        <Form.Control type="birthday" placeholder="Enter your birthdate" value={birthday} onChange={e => setBirthday(e.target.value)} />
+        {/* code added here to display validation error */}
+        {birthdayErr && <p>{birthdayErr}</p>}
+       </Form.Group>
          <Button variant="primary" type="submit" onClick={handleSubmit}>
            Submit
            </Button>
        </Form>
      )
 }
-/*constructor(props) {
-super(props);
-
-this.state = {
-username: '',
-password: '',
-passwordConfirmation: '',
-email: '',
-birthdate: '',
-RegistrationErrors: ''
- }
-
-this.handleSubmit = this.handleSubmit.bind(this);
-this.handleChange = this.handleChange.bind(this);
-}
-
-handleSubmit(event) {
- axios.post('https://bestmoviecentral.herokuapp.com/users', {
-  user: {
-  Username: this.state.username,
-  Password: this.state.password,
-  PasswordConfirmation: this.state.passwordConfirmation,
-  email: this.state.email,
-  bithdate: this.state.birthdate
-  }
-
-}, {withCredentials: true}).then(Response => {
-  console.log("registration res", Response);
-}).catch(error => {
-  console.log("registration error", error)
-}) // don't forget withCredentials for cookie authentication!
- event.preventDefault();
-}
-
-handleChange(event) {
-  this.setState({
-  [event.target.name]: event.target.value
-  })
-}
-
-render() {
-return (
-<div>
-<form onSubmit={this.handleSubmit}>
-<input type="email" 
-       name="email" 
-       placeholder="email" 
-       value={this.state.email} 
-       onChange={this.handleChange} required/>
-
-<input type="username" 
-       name="username" 
-       placeholder="username" 
-       value={this.state.username} 
-       onChange={this.handleChange} required/>
-
-<input type="password" 
-       name="password" 
-       placeholder="password" 
-       value={this.state.password} 
-       onChange={this.handleChange} required/>
-  
-<input type="password" 
-       name="passwordConfirmation" 
-       placeholder="password confirmation" 
-       value={this.state.passwordConfirmation} 
-       onChange={this.handleChange} required/>
-
-<input type="birthdate" 
-       name="birthdate" 
-       placeholder="birthdate" 
-       value={this.state.birthdate} 
-       onChange={this.handleChange} required/>
-</form>
-<button type="submit">Register</button>
-</div>
-  );
- }
-}
-
-*/ //export default RegistrationView 
