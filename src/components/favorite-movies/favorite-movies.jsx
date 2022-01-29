@@ -11,7 +11,7 @@ function FavoriteMovies({ favoriteMoviesList }) {
         headers: {Authorization: `bearer ${token}` },
          });
         };
-        
+
        return (
             <>
             <Row>
@@ -20,11 +20,12 @@ function FavoriteMovies({ favoriteMoviesList }) {
             </Col>
             </Row>
             <Row>
-            {favoriteMoviesList.map((ImagePath, Title, _id) => {
+            {favoriteMoviesList.map((ImagePath, Title, m) => {
             return (
            <Col xs={12} md={6} lg={3} key={_id}>
            <Figure>
            <Link to={`/movies/${movies._id}`}>
+           
            <Figure.Image
            src={ImagePath}
            alt={Title}

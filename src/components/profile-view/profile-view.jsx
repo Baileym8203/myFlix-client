@@ -53,7 +53,7 @@ return (
 <Col xs={12} sm={8}>
 <Card>
 <Card.Body>
-<FavoriteMovies favoriteMoviesList = {favoriteMoviesList}/>
+<FavoriteMovies favoriteMoviesList = {user.FavoriteMovies}/>
 </Card.Body>
 </Card>
 
