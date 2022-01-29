@@ -10,14 +10,11 @@ render() {
  return (
 
 <Card>
-<Card.Img variant="top" src={movieData.ImagePath}/>
-<Card.Body>
-<Card.Title>{movieData.Title}</Card.Title>
-<Card.Text>{movieData.Description}</Card.Text>
 <Link to={`/movies/${movieData._id}`}>
-<Button variant="link">Open</Button>
+<Button variant="link">
+<Card.Img variant="top" src={movieData.ImagePath}/>
+</Button>
 </Link>
-</Card.Body>
 </Card>
  )
  };
@@ -40,3 +37,15 @@ movieData: PropTypes.shape({
  })
 }).isRequired,
 };
+
+/*
+<Card.Body>
+<Card.Title>{movieData.Title}</Card.Title>
+<Card.Text>{movieData.Description}</Card.Text>
+<Link to={`/movies/${movieData._id}`}>
+<Button variant="link">Open</Button>
+</Link>
+</Card.Body>
+*/
+
+// testing cards with only image links to info
