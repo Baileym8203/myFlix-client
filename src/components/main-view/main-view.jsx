@@ -17,7 +17,7 @@ import { MenuBar } from '../navbar/navbar';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view'
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
 // both import react components from react bootstrap!
@@ -94,8 +94,9 @@ console.log(error);
         return (
        
           <Router>
-         
+          
           <MenuBar/>
+         
           <Row className=" main-view justify-content-md-center">
           <Route exact path="/" render={() => {
           if (!user) return <Col>

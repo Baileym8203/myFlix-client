@@ -6,7 +6,7 @@ import axios from 'axios';
 function FavoriteMovies({ favoriteMoviesList }) {
         const removeFav = (id) => {
         let token = localStorage.getItem('token');
-        let url = `https://bestmoviecentral.herokuapp.com/users${localStorage.getItem('user')}/movies/${id}`;
+        let url = `https://bestmoviecentral.herokuapp.com/users/${localStorage.getItem('user')}/movies/${id}`;
         axios.delete(url, {
         headers: {Authorization: `bearer ${token}` },
          });
@@ -20,7 +20,7 @@ function FavoriteMovies({ favoriteMoviesList }) {
             </Col>
             </Row>
             <Row>
-            {favoriteMoviesList.map((ImagePath, Title, _id) => {
+            {favoriteMoviesList.map(({ImagePath, Title, _id}) => {
             return (
            <Col xs={12} md={6} lg={3} key={_id}>
            <Figure>

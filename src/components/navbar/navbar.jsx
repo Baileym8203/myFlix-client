@@ -19,6 +19,7 @@ if (localStorage.getItem("token")) {
 };
 
 return (
+
 <Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
 <Container>
 <Navbar.Brand className="navbar-logo" href="/">BestMovies</Navbar.Brand>
@@ -44,6 +45,7 @@ return (
 </Navbar.Collapse>
 </Container>
 </Navbar>
+
    );
 }
 
