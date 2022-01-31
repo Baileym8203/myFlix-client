@@ -39,7 +39,7 @@ props.onLoggedIn(data);
         Submit
       </Button>
     </Form>
-  );
+  )
 }
 
 
