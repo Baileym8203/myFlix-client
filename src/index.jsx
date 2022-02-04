@@ -1,10 +1,17 @@
 import react from 'react';
 import { Container } from 'react-bootstrap';
 import reactDOM from 'react-dom';
-import  {MainView}  from './components/main-view/main-view';
+import  MainView  from './components/main-view/main-view';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import moviesApp from './reducers/reducers';
+import { devToolsEnhancer  } from 'redux-devtools-extension';
 // Import statement to indicate that you need to bundle './index.sccs'
 
 import './index.scss';
+
+const store = createStore(moviesApp, devToolsEnhancer());
+// this will create the redux store!
 
 
 //main component (will eventually use all the others)
@@ -12,9 +19,11 @@ import './index.scss';
 class myFlixApplication extends react.Component {
 render() {
 return (
+<Provider store={store}>
 <Container>
 <MainView />
   </Container>
+  </Provider>
   ); 
  }
 }

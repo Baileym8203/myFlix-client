@@ -14,6 +14,17 @@ function FavoriteMovies({ favoriteMoviesList }) {
     });
   };
 
+  const addFav = (id) => {
+  let token = localStorage.getItem("token");
+  let url = `https://bestmoviecentral.herokuapp.com/users/${localStorage.getItem(
+    "user"
+  )}/movies/${id}`;
+  axios.post(url, {
+  headers: { Authorization: `bearer ${token}` },
+   });
+  };
+
+  
   return (
     <>
       <Row>
