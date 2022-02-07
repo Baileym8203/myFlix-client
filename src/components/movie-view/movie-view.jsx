@@ -17,6 +17,8 @@ export class MovieView extends React.Component {
   document.removeEventListener('keypress', this.keypressCallback);
   }*/ // look at later!!
   // this isn't important to the project!
+
+
   render() {
     const { movie, onBackClick} = this.props;
    if(!movie) return <p>Loading</p>
@@ -24,7 +26,7 @@ export class MovieView extends React.Component {
       
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImagePath} />
+          <img src={movie.ImagePath} className="img-fluid" />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -41,6 +43,7 @@ export class MovieView extends React.Component {
         <Button variant="link">Director</Button>
         </Link>
         <button onClick={() => { onBackClick(); }}>Back</button>
+       
        </div>
     );
   }

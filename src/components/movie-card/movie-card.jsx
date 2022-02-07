@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
+import './movie-card.scss'
+
 export class MovieCard extends react.Component {
-render() {
+
+    render() {
  const {movieData} = this.props;
  
  return (
@@ -12,7 +16,7 @@ render() {
 <Card>
 <Link to={`/movies/${movieData._id}`}>
 <Button variant="link">
-<Card.Img variant="top" src={movieData.ImagePath}/>
+<Card.Img variant="top" src={movieData.ImagePath} className="movie-image img-fluid"/>
 </Button>
 </Link>
 </Card>
