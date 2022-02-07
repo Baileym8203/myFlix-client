@@ -3,7 +3,21 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
-export function RegistrationView(props) {
+import { connect } from 'react-redux';
+const mapStateToProps = state => {
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [email, setEmail] = useState('')
+  const [birthday, setBirthday] = useState('');
+  const [ usernameErr, setUsernameErr ] = useState('');
+  const [ passwordErr, setPasswordErr ] = useState('');
+  const [emailErr, setEmailErr] = useState('');
+  const [birthdayErr, setBirthdayErr] = useState('');
+  const isReq 
+  }
+
+
+function RegistrationView(props) {
 const [ username, setUsername ] = useState('');
 const [ password, setPassword ] = useState('');
 const [email, setEmail] = useState('')
@@ -101,3 +115,5 @@ return (
        </Form>
      )
 }
+
+export default connect(mapStateToProps)(RegistrationView);

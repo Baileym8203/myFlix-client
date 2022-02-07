@@ -18,7 +18,7 @@ import { MovieView } from '../movie-view/movie-view';
 // this will import movie view from movie-view.jsx!
 import LoginView from '../login-view/login-view';
 // this will import login view from login-view.jsx!
-import { RegistrationView } from '../registration-view/registration-view';
+import  RegistrationView  from '../registration-view/registration-view';
 // this will import genre view from genre-view.jsx!
 import { MenuBar } from '../navbar/navbar';
 import { GenreView } from '../genre-view/genre-view';
