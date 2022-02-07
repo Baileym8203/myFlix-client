@@ -13,7 +13,7 @@ const mapStateToProps = state => {
   const [ passwordErr, setPasswordErr ] = useState('');
   const [emailErr, setEmailErr] = useState('');
   const [birthdayErr, setBirthdayErr] = useState('');
-  const isReq 
+  const isReq = Boolean;
   }
 
 
