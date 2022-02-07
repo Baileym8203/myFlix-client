@@ -34,15 +34,19 @@ return (
 <Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
 )}
 {
-<Button>
+<Button variant='link'>
 <Link to="/">Sign-in</Link>
 </Button>
 }
 {
+<Button variant='link'>
 <Link to="/register">Sign-up</Link>
+</Button>
 }
 {isAuth() && (
+<Button variant='link'>
 <Link to="/profile"> My Profile</Link>
+</Button>
 )}
 </Nav>
 </Navbar.Collapse>
