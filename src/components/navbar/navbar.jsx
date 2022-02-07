@@ -1,5 +1,6 @@
 import react from 'react';
 import {Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export function MenuBar({user}) {
 const onLoggedOut = () => {
@@ -27,19 +28,19 @@ return (
 <Navbar.Collapse id="responsive-navbar-nav">
 <Nav className="ml-auto">
 {isAuth() && (
-<Nav.Link href={`/users/${user}`}>{user}</Nav.Link>
+<Link href={`/users/${user}`}>{user}</Link>
 )}
 {isAuth() && (
 <Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
 )}
 {
-<Nav.Link href="/">Sign-in</Nav.Link>
+<Link href="/">Sign-in</Link>
 }
 {
-<Nav.Link href="/register">Sign-up</Nav.Link>
+<Link href="/register">Sign-up</Link>
 }
 {isAuth() && (
-<Nav.Link href="/profile"> My Profile</Nav.Link>
+<Link href="/profile"> My Profile</Link>
 )}
 </Nav>
 </Navbar.Collapse>
