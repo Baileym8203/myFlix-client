@@ -3,10 +3,17 @@ import { Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react'// this is needed for useState to be defined!
 import axios from 'axios';
+import { connect } from 'react-redux';
 
- export function LoginView(props) {
- const [username, setUsername] = useState('');
- const [password, setPassword] = useState('');
+const mapStateToProps = state => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  };
+  
+
+ function LoginView(props) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
  const handleSubmit = (e) => {
  e.preventDefault();
@@ -42,6 +49,7 @@ props.onLoggedIn(data);
   )
 }
 
+export default connect(mapStateToProps)(LoginView);
 
 
 

@@ -20,7 +20,7 @@ switch (action.type) {
  }
 }
 
-function users(state = '', action) {
+function users(state = [], action) {
 switch (action.type) {
 case SET_USERS:
     return action.value;
