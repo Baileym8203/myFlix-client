@@ -34,7 +34,9 @@ return (
 <Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
 )}
 {
+<Button>
 <Link to="/">Sign-in</Link>
+</Button>
 }
 {
 <Link to="/register">Sign-up</Link>
