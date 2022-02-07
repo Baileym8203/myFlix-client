@@ -28,19 +28,19 @@ return (
 <Navbar.Collapse id="responsive-navbar-nav">
 <Nav className="ml-auto">
 {isAuth() && (
-<Link href={`/users/${user}`}>{user}</Link>
+<Link to={`/users/${user}`}>{user}</Link>
 )}
 {isAuth() && (
 <Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
 )}
 {
-<Link href="/">Sign-in</Link>
+<Link to="/">Sign-in</Link>
 }
 {
-<Link href="/register">Sign-up</Link>
+<Link to="/register">Sign-up</Link>
 }
 {isAuth() && (
-<Link href="/profile"> My Profile</Link>
+<Link to="/profile"> My Profile</Link>
 )}
 </Nav>
 </Navbar.Collapse>
