@@ -20,7 +20,7 @@ class myFlixApplication extends react.Component {
 render() {
 return (
 <Provider store={store}>
-<Container>
+<Container fluid>
 <MainView />
   </Container>
   </Provider>

@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+import { Button, Container, Row, Col } from 'react-bootstrap';
+
+import './movie-view.scss'
+
 export class MovieView extends React.Component {
-  
+
+
   /*keypressCallback(event) {
     console.log(event.key);
     }
@@ -23,10 +27,12 @@ export class MovieView extends React.Component {
     const { movie, onBackClick} = this.props;
    if(!movie) return <p>Loading</p>
     return (
-      
-      <div className="movie-view">
+      <Container fluid className='img-fluid'>
+      <Row>
+        <Col md={12} className="center" style={{display: "flex", justifyContent: "center"}}>
+      <div className=" img-fluid movie-view" >
         <div className="movie-poster">
-          <img src={movie.ImagePath} className="img-fluid" />
+          <img src={movie.ImagePath} className="img-fluid " />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -36,15 +42,18 @@ export class MovieView extends React.Component {
           <span className="label">Description: </span>
           <span className="value">{movie.Description}</span>
         </div>
-        <Link to={`/genres/${movie.Genre.Name}`}>
-        <Button variant="link">Genre</Button>
+        <Link to={`/genres/${movie.Genre.Name}`} className="button-one">
+        <Button variant="dark">Genre</Button>
         </Link>
-        <Link to={`/directors/${movie.Director.Name}`}>
-        <Button variant="link">Director</Button>
+        <Link to={`/directors/${movie.Director.Name}`} className="button-two">
+        <Button variant="dark">Director</Button>
         </Link>
-        <button onClick={() => { onBackClick(); }}>Back</button>
+        <Button variant="dark" onClick={() => { onBackClick(); }} className="button-three">Back</Button>
        
        </div>
+       </Col>
+       </Row>
+       </Container>
     );
   }
 }

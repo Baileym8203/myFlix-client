@@ -4,16 +4,19 @@ import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
+
+import './registration-view.scss'
+
+
 const mapStateToProps = state => {
-  const [ username, setUsername ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [email, setEmail] = useState('')
-  const [birthday, setBirthday] = useState('');
-  const [ usernameErr, setUsernameErr ] = useState('');
-  const [ passwordErr, setPasswordErr ] = useState('');
-  const [emailErr, setEmailErr] = useState('');
-  const [birthdayErr, setBirthdayErr] = useState('');
-  const isReq = Boolean;
+ return {users: state.username},
+ {users: state.password},
+ {users: state.email},
+ {users: state.birthday},
+ {users: state.usernameErr},
+ {users: state.passwordErr},
+ {users: state.emailErr},
+ {users: state.birthdayErr}
   }
 
 
@@ -83,7 +86,7 @@ console.log('error registering the user')
 };
 
 return (
-       <Form>
+       <Form style={{margin: "7em"}}>
          <Form.Group controlId="formUsername">
            <Form.Label>Username:</Form.Label>
            <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
@@ -109,7 +112,7 @@ return (
         {/* code added here to display validation error */}
         {birthdayErr && <p>{birthdayErr}</p>}
        </Form.Group>
-         <Button variant="primary" type="submit" onClick={handleSubmit}>
+         <Button variant="dark" type="submit" onClick={handleSubmit} className="button-one">
            Submit
            </Button>
        </Form>

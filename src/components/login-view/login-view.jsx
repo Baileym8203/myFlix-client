@@ -1,13 +1,17 @@
 import react from 'react';
-import { Form } from 'react-bootstrap';
+import { Container, Form } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react'// this is needed for useState to be defined!
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+import './login-view.scss'
+
 const mapStateToProps = state => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  return {users: state.username},
+  {users: state.password},
+  {users: state.setUsername},
+  {users: state.setPassword}
   };
   
 
@@ -32,20 +36,23 @@ props.onLoggedIn(data);
 };
 
  return (
-    <Form>
+    <Container className='background-color'>
+    <Form style={{margin: "7em"}}>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" onChange={e => setUsername(e.target.value)} />
+        <Form.Control type="text" placeholder='Enter your Username' onChange={e => setUsername(e.target.value)} />
       </Form.Group>
 
       <Form.Group controlId="formPassword">
         <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" onChange={e => setPassword(e.target.value)} />
+        <Form.Control type="password" placeholder='Enter your Password' onChange={e => setPassword(e.target.value)} />
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={handleSubmit}>
+      <br></br>
+      <Button variant="dark" type="submit" onClick={handleSubmit}>
         Submit
       </Button>
     </Form>
+    </Container>
   )
 }
 

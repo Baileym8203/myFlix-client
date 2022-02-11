@@ -3,6 +3,8 @@ import {Button} from 'react-bootstrap/';
 import {Form} from 'react-bootstrap/';
 import axios from 'axios';
 
+import './update-user.scss'
+
  function UpdateUser({handleUpdate, user}){
   const [userName, setUsername] = useState(user.Username) ;
   const [email, setEmail] = useState(user.Email);
@@ -75,8 +77,8 @@ required
 placeholder='Enter your email address'
 />
 </Form.Group>
-<Button variant='primary' type='submit'
-onClick={handleSubmit}>
+<Button variant='dark' type='submit'
+onClick={handleSubmit} className="button-submit">
 Submit
 </Button>
 </Form>

@@ -26,7 +26,8 @@ import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view'
 import { Container, Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
-
+ 
+import './main-view.scss'
 
 // both import react components from react bootstrap!
 class MainView extends react.Component {

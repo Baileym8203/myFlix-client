@@ -13,10 +13,10 @@ export class MovieCard extends react.Component {
  
  return (
 
-<Card>
+<Card className='movie-image'>
 <Link to={`/movies/${movieData._id}`}>
 <Button variant="link">
-<Card.Img variant="top" src={movieData.ImagePath} className="movie-image img-fluid"/>
+<Card.Img variant="top" src={movieData.ImagePath} className="img-fluid card-look"/>
 </Button>
 </Link>
 </Card>
