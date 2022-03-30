@@ -42,8 +42,8 @@ if (!user) return <p>Not user data</p>;
         
         return (
 <>
-<h4 className='text-center'>Update</h4>
-<Form className='text-center'>
+<h4>Update</h4>
+<Form>
 <Form.Group>
 <Form.Label>Username:</Form.Label>
 <Form.Control

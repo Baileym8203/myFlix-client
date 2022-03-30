@@ -12,6 +12,7 @@ import { setMovies } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 // not made yet!
 
+import { MovieCard } from '../movie-card/movie-card';
 // this will import movie card from movie-card.jsx!
 import { MovieView } from '../movie-view/movie-view';
 // this will import movie view from movie-view.jsx!
@@ -95,123 +96,66 @@ console.log(error);
 
         
         return (
+       
           <Router>
-            <MenuBar />
-              <Row className="" style={{margin: "0px", padding: "0px"}}>
-                <Route
-                  exact
-                  path="/"
-                  render={() => {
-                    if (!user)
-                      return (
-                          <LoginView
-                            onLoggedIn={(user) => this.onLoggedIn(user)}
-                          />
-  
-                      );
-                    return (
-                        <MoviesList movies={movies} />
-                    );
-                  }}
-                />
+          
+          <MenuBar/>
+         
+          <Row className=" main-view justify-content-md-center">
+          <Route exact path="/" render={() => {
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+          return <MoviesList movies={movies}/>;
+          }} />
+          
+          <Route path="/register" render={() => {
+          if (user) return <Redirect to="/" /> 
+          return <Col>
+          <RegistrationView />
+          </Col>
+          }} />
 
-                <Route
-                  path="/register"
-                  render={() => {
-                    if (user) return <Redirect to="/" />;
-                    return (
-                        <RegistrationView />
-                    );
-                  }}
-                />
+          <Route path="/profile" render={() => {
+           if (!user) return <Col>
+           <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+           </Col>
+           return <Col md={8}>
+           <ProfileView/>
+           </Col>
+          }} />
+    
+          <Route path="/movies/:movieId" render={({ match, history }) => { 
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+          return <Col md={8}>
+          <MovieView movie={movies.find(m => m._id === match.params.movieId)} 
+          onBackClick={() => history.goBack()} />
+          </Col>
+          }} />
 
-                <Route
-                  path="/profile"
-                  render={() => {
-                    if (!user)
-                      return (
-                          <LoginView
-                            onLoggedIn={(user) => this.onLoggedIn(user)}
-                          />
-                      );
-                    return (
-                        <Col xl={12}>
-                        <ProfileView />
-                  </Col>
-                    );
-                  }}
-                />
+          <Route path="/directors/:name" render={({ match, history }) => {
+           if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+          return <Col md={8}>
+          <DirectorView directorName={match.params.name} onBackClick={() => history.goBack()} />
+          </Col>
+          }} />
 
-                <Route
-                  path="/movies/:movieId"
-                  render={({ match, history }) => {
-                    if (!user)
-                      return (
-                       
-                          <LoginView
-                            onLoggedIn={(user) => this.onLoggedIn(user)}
-                          />
-                      
-                      );
-                    return (
-                        <MovieView
-                          movie={movies.find(
-                            (m) => m._id === match.params.movieId
-                          )}
-                          onBackClick={() => history.goBack()}
-                        />
-                    );
-                  }}
-                />
-
-                <Route
-                  path="/directors/:name"
-                  render={({ match, history }) => {
-                    if (!user)
-                      return (
-                        
-                          <LoginView
-                            onLoggedIn={(user) => this.onLoggedIn(user)}
-                          />
-                          
-                       
-                      );
-                    return (
-                      
-                        <DirectorView
-                          directorName={match.params.name}
-                          onBackClick={() => history.goBack()}
-                        />
-             
-                    );
-                  }}
-                />
-
-                <Route
-                  path="/genres/:name"
-                  render={({ match, history }) => {
-                    if (!user)
-                      return (
-                    
-                          <LoginView
-                            onLoggedIn={(user) => this.onLoggedIn(user)}
-                          />
-                          
-                     
-                      );
-                    return (
-              
-                        <GenreView
-                          genreName={match.params.name}
-                          onBackClick={() => history.goBack()}
-                        />
-                
-                    );
-                  }}
-                />
-              </Row>
+          <Route path="/genres/:name" render={({ match, history }) => {
+          if (!user) return <Col>
+          <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+          </Col>
+          return <Col md={8}>
+          <GenreView genreName={match.params.name} onBackClick={() => history.goBack()}/>
+          </Col>
+          }} />
+           </Row>
           </Router>
-        );
+         
+         );
         }
       }
 
