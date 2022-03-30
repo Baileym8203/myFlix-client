@@ -17,21 +17,21 @@ function FavoriteMovies({ favoriteMoviesList }) {
     <>
       <Row>
         <Col xs={12}>
-          <h4>Favorite Movies</h4>
+          <h4 className="text-center">Favorite Movies</h4>
         </Col>
       </Row>
       <Row>
         {favoriteMoviesList.map(({ ImagePath, Title, _id }) => {
           return (
             <Col xs={12} md={6} lg={3} key={_id}>
-              <Figure>
+              <Figure className="text-center">
                 <Link to={`/movies/${_id}`}>
-                  <Figure.Image src={ImagePath} alt={Title} />
+                  <Figure.Image style={{width: "250px", height: "350px"}} src={ImagePath} alt={Title} />
                   <Figure.Caption>{Title}</Figure.Caption>
                 </Link>
               </Figure>
               <Button variant="secondary" onClick={() => removeFav(_id)}>
-                Remove from list
+                Remove
               </Button>
             </Col>
           );

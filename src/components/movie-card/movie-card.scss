@@ -6,3 +6,14 @@
   height: 325px;
   }
 }
+
+.movie-image:hover {
+transition: 0.9s;
+filter: brightness(10%);
+border: 100px
+}
+
+.card-look:hover {
+transition: 0.9s;
+width: 1000px;
+}
