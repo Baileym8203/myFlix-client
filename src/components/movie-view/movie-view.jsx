@@ -27,7 +27,9 @@ export class MovieView extends React.Component {
     const { movie, onBackClick} = this.props;
    if(!movie) return <p>Loading</p>
     return (
-        <Col md={12} className="text-center" style={{display: "flex", justifyContent: "center", color: "white", paddingTop: "10%", paddingBottom: "0%", margin: "0%"}}>
+      <Container fluid className='img-fluid'>
+      <Row>
+        <Col md={12} className="center" style={{display: "flex", justifyContent: "center"}}>
       <div className=" img-fluid movie-view" >
         <div className="movie-poster">
           <img src={movie.ImagePath} className="img-fluid " />
@@ -50,6 +52,8 @@ export class MovieView extends React.Component {
        
        </div>
        </Col>
+       </Row>
+       </Container>
     );
   }
 }

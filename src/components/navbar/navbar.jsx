@@ -1,7 +1,7 @@
 import react from 'react';
 import {Navbar, Container, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './navbar.css'
+
 export function MenuBar({user}) {
 const onLoggedOut = () => {
 localStorage.clear();
@@ -19,58 +19,41 @@ if (localStorage.getItem("token")) {
  }
 };
 
-
 return (
-  <Container
-    fluid
-    style={{
-      padding: "0px",
-      margin: "0px",
-    }}
-  >
-    <Navbar className="main-nav" sticky="top" variant="light">
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="ml-auto">
-          {isAuth() && <Link to={`/users/${user}`}>{user}</Link>}
-          {isAuth() && (
-            <Button
-              variant="link"
-              onClick={() => {
-                onLoggedOut();
-              }}
-              style={{ color: "black" }}
-            >
-              Logout
-            </Button>
-          )}
-          {
-            <Button variant="link">
-              <Link style={{ color: "black" }} to="/">
-                Sign-in
-              </Link>
-            </Button>
-          }
-          {
-            <Button variant="link">
-              <Link style={{ color: "black" }} to="/register">
-                Sign-up
-              </Link>
-            </Button>
-          }
-          {isAuth() && (
-            <Button variant="link">
-              <Link style={{ color: "black" }} to="/profile">
-                {" "}
-                My Profile
-              </Link>
-            </Button>
-          )}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  </Container>
-);
+
+<Navbar className="main-nav" sticky="top" bg="dark" expand="lg" variant="dark">
+<Container>
+<Navbar.Brand className="navbar-logo" href="/">BestMovies</Navbar.Brand>
+<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+<Navbar.Collapse id="responsive-navbar-nav">
+<Nav className="ml-auto">
+{isAuth() && (
+<Link to={`/users/${user}`}>{user}</Link>
+)}
+{isAuth() && (
+<Button variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
+)}
+{
+<Button variant='link'>
+<Link to="/">Sign-in</Link>
+</Button>
+}
+{
+<Button variant='link'>
+<Link to="/register">Sign-up</Link>
+</Button>
+}
+{isAuth() && (
+<Button variant='link'>
+<Link to="/profile"> My Profile</Link>
+</Button>
+)}
+</Nav>
+</Navbar.Collapse>
+</Container>
+</Navbar>
+
+   );
 }
 
 
