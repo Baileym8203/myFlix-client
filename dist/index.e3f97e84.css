@@ -1,0 +1,44 @@
+.movie-image {
+  padding: 5px;
+  margin: 5px;
+  width: 250px;
+}
+.movie-image Img {
+  height: 325px;
+}
+
+.movie-image:hover {
+  transition: 0.9s;
+  filter: brightness(10%);
+  border: 100px;
+}
+
+.card-look:hover {
+  transition: 0.9s;
+  width: 1000px;
+}
+.movie-card-view {
+  margin-top: 5px;
+  padding: 0px;
+}
+
+
+.button-one {
+  margin-top: 10px;
+}
+.main-nav{
+background-color: rgba(255, 255, 255, 0.938);
+width: 100%
+}
+
+.button-submit {
+  margin-top: 10px;
+}
+body {
+  background: fixed no-repeat center center url("https://img.wallpapersafari.com/tablet/2560/1700/61/42/njWz8v.jpg");
+  background-size: cover;
+}
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.e3f97e84.css.map */

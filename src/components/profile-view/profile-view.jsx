@@ -62,9 +62,8 @@ export function ProfileView({ onUpdatedUserInfo }) {
   if (!user) return <p>Not user data</p>;
 
   return (
-    <Container>
       <Row>
-        <Col xs={12} sm={4}>
+        <Col xl={12}>
           <Card>
             <Card.Body>
               <UserInfo name={user.Username} email={user.Email} />
@@ -72,17 +71,18 @@ export function ProfileView({ onUpdatedUserInfo }) {
           </Card>
         </Col>
 
-        <Col xs={12} sm={8}>
+        <Col xl={12}>
           <Card>
             <Card.Body>
               <FavoriteMovies favoriteMoviesList={favoriteMoviesList} />
             </Card.Body>
           </Card>
         </Col>
-      </Row>
 
+      <Col xl={12}>
       <UpdateUser user={user} handleUpdate={handleUpdate} />
-    </Container>
+      </Col>
+      </Row>
   );
 }
 

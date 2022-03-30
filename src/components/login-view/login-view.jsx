@@ -36,24 +36,33 @@ props.onLoggedIn(data);
 };
 
  return (
-    <Container className='background-color'>
-    <Form style={{margin: "7em"}}>
-      <Form.Group controlId="formUsername">
-        <Form.Label>Username:</Form.Label>
-        <Form.Control type="text" placeholder='Enter your Username' onChange={e => setUsername(e.target.value)} />
-      </Form.Group>
+   <Container>
+     <Form style={{ marginTop: "375px", color: "white" }} className="text-center">
+       <h1>BestMovies</h1>
+       <Form.Group controlId="formUsername">
+         <Form.Label>Username:</Form.Label>
+         <Form.Control
+           type="text"
+           placeholder="Enter your Username"
+           onChange={(e) => setUsername(e.target.value)}
+         />
+       </Form.Group>
 
-      <Form.Group controlId="formPassword">
-        <Form.Label>Password:</Form.Label>
-        <Form.Control type="password" placeholder='Enter your Password' onChange={e => setPassword(e.target.value)} />
-      </Form.Group>
-      <br></br>
-      <Button variant="dark" type="submit" onClick={handleSubmit}>
-        Submit
-      </Button>
-    </Form>
-    </Container>
-  )
+       <Form.Group controlId="formPassword">
+         <Form.Label>Password:</Form.Label>
+         <Form.Control
+           type="password"
+           placeholder="Enter your Password"
+           onChange={(e) => setPassword(e.target.value)}
+         />
+       </Form.Group>
+       <br></br>
+       <Button variant="dark" type="submit" onClick={handleSubmit}>
+         Submit
+       </Button>
+     </Form>
+   </Container>
+ );
 }
 
 export default connect(mapStateToProps)(LoginView);
