@@ -15,28 +15,42 @@ function FavoriteMovies({ favoriteMoviesList }) {
   };
   return (
     <>
-      <Row>
-        <Col xs={12}>
+ <Col xs={12} style={{paddingTop: "100px"}}>
           <h4 className="text-center">Favorite Movies</h4>
         </Col>
-      </Row>
-      <Row>
         {favoriteMoviesList.map(({ ImagePath, Title, _id }) => {
           return (
-            <Col xs={12} md={6} lg={3} key={_id}>
-              <Figure className="text-center">
-                <Link to={`/movies/${_id}`}>
-                  <Figure.Image style={{width: "250px", height: "350px"}} src={ImagePath} alt={Title} />
+            <Row>
+              <Col
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+                key={_id}
+              >
+                <Figure className="text-center">
+                  <Link to={`/movies/${_id}`}>
+                    <Figure.Image
+                      style={{ width: "250px", height: "350px" }}
+                      src={ImagePath}
+                      alt={Title}
+                    />
+                  </Link>
                   <Figure.Caption>{Title}</Figure.Caption>
-                </Link>
-              </Figure>
-              <Button variant="secondary" onClick={() => removeFav(_id)}>
-                Remove
-              </Button>
-            </Col>
+                </Figure>
+              </Col>
+              <Col md={12} style={{display: "flex", justifyContent: "center", paddingBottom: "100px" }}>
+                <Button
+                  style={{ marginTop: "20px"}}
+                  variant="dark"
+                  onClick={() => removeFav(_id)}
+                >
+                  Remove
+                </Button>
+              </Col>
+            </Row>
           );
         })}
-      </Row>
     </>
   );
 }

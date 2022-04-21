@@ -41,49 +41,56 @@ import './update-user.scss'
 if (!user) return <p>Not user data</p>;
         
         return (
-<>
-<h4 className='text-center'>Update</h4>
-<Form className='text-center'>
-<Form.Group>
-<Form.Label>Username:</Form.Label>
-<Form.Control
-type='text'
-defaultValue={user.Username}
-onChange={(e) => setUsername(e.target.value)}
-required
-placeholder='Enter a username' 
-/>
-</Form.Group>
+          <>
+            <Form
+              className="text-center"
+              style={{ backgroundColor: "white", paddingBottom: "104px", paddingLeft: "25px", paddingRight: "25px", paddingTop: "20px"}}
+            >
+              <h4 className="text-center">Update</h4>
+              <Form.Group>
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  defaultValue={user.Username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  placeholder="Enter a username"
+                />
+              </Form.Group>
 
-<Form.Group>
-<Form.Label>Password:</Form.Label>
-<Form.Control
-type='password'
-defaultValue=''
-onChange={(e) => setPassword(e.target.value)}
-required
-minLength="8"
-placeholder="your password must be 8 or more characters"
-/>
-</Form.Group>
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  defaultValue=""
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength="8"
+                  placeholder="your password must be 8 or more characters"
+                />
+              </Form.Group>
 
-<Form.Group>
-<Form.Label>Email</Form.Label>
-<Form.Control
-type='email'
-defaultValue={user.Email}
-onChange={(e) => setEmail(e.target.value)}
-required
-placeholder='Enter your email address'
-/>
-</Form.Group>
-<Button variant='dark' type='submit'
-onClick={handleSubmit} className="button-submit">
-Submit
-</Button>
-</Form>
-</>    
-        )
+              <Form.Group>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  defaultValue={user.Email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Enter your email address"
+                />
+              </Form.Group>
+              <Button
+                variant="dark"
+                type="submit"
+                onClick={handleSubmit}
+                className="button-submit"
+              >
+                Update
+              </Button>
+            </Form>
+          </>
+        );
     
 }
 export default UpdateUser;

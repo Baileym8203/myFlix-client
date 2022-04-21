@@ -36,11 +36,31 @@ props.onLoggedIn(data);
 };
 
  return (
-   <Container>
-     <Form style={{ marginTop: "375px", color: "white" }} className="text-center">
-       <h1>BestMovies</h1>
-       <Form.Group controlId="formUsername">
-         <Form.Label>Username:</Form.Label>
+   <Container fluid className="container --login-view">
+     <Form
+       style={{ marginTop: "375px", color: "white" }}
+       className="text-center"
+     >
+       <h1
+         style={{
+           marginTop: "-110px",
+           marginBottom: "110px",
+           color: "red",
+           fontWeight: "700",
+           textShadow: "black 3px 2.5px 3.5px",
+           fontSize: "55px",
+         }}
+       >
+         BestMovies
+       </h1>
+       <Form.Group
+         controlId="formUsername"
+         style={{
+           marginBottom: "25px",
+           paddingLeft: "20px",
+           paddingRight: "20px",
+         }}
+       >
          <Form.Control
            type="text"
            placeholder="Enter your Username"
@@ -48,8 +68,10 @@ props.onLoggedIn(data);
          />
        </Form.Group>
 
-       <Form.Group controlId="formPassword">
-         <Form.Label>Password:</Form.Label>
+       <Form.Group
+         style={{ paddingLeft: "20px", paddingRight: "20px" }}
+         controlId="formPassword"
+       >
          <Form.Control
            type="password"
            placeholder="Enter your Password"
@@ -57,8 +79,13 @@ props.onLoggedIn(data);
          />
        </Form.Group>
        <br></br>
-       <Button variant="dark" type="submit" onClick={handleSubmit}>
-         Submit
+       <Button
+         style={{ width: "110px", marginTop: "15px" }}
+         variant="dark"
+         type="submit"
+         onClick={handleSubmit}
+       >
+         Sign In
        </Button>
      </Form>
    </Container>

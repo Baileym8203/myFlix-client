@@ -1,7 +1,9 @@
 .movie-image {
   padding: 5px;
-  margin: 5px;
+  margin: 30px;
+  margin-bottom: 70px;
   width: 250px;
+  height: 325px;
   Img{
   height: 325px;
   }
@@ -9,11 +11,6 @@
 
 .movie-image:hover {
 transition: 0.9s;
-filter: brightness(10%);
-border: 100px
-}
+filter: brightness(10%) blur(2px);
 
-.card-look:hover {
-transition: 0.9s;
-width: 1000px;
 }

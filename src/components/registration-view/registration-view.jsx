@@ -2,9 +2,8 @@ import react from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Container, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-
 import './registration-view.scss'
 
 
@@ -86,37 +85,72 @@ console.log('error registering the user')
 };
 
 return (
-       <Form style={{margin: "7em"}}>
-         <Form.Group controlId="formUsername">
-           <Form.Label>Username:</Form.Label>
-           <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
-           {/* code added here to display validation error */}
-           {usernameErr && <p>{usernameErr}</p>}
-   </Form.Group>
-   
-         <Form.Group controlId="formPassword">
-           <Form.Label>Password</Form.Label>
-           <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
-           {/* code added here to display validation error */}
-           {passwordErr && <p>{passwordErr}</p>}
-   </Form.Group>
-       <Form.Group controlId="formEmail">
-         <Form.Label>Email</Form.Label>
-         <Form.Control type="email" placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} />
-       {/* code added here to display validation error */}
-       {emailErr && <p>{emailErr}</p>}
-       </Form.Group>
-       <Form.Group>
-        <Form.Label>Birthday</Form.Label>
-        <Form.Control type="birthday" placeholder="Enter your birthdate" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        {/* code added here to display validation error */}
-        {birthdayErr && <p>{birthdayErr}</p>}
-       </Form.Group>
-         <Button variant="dark" type="submit" onClick={handleSubmit} className="button-one">
-           Submit
-           </Button>
-       </Form>
-     )
+  <Container classname="container --registration-view"
+    style={{ justifyContent: "center", color: "white", textAlign: "center" }}
+  >
+    <Col>
+      <Form style={{ margin: "7em" }}>
+        <h1 style={{ marginBottom: "50px" }}>BestMovies</h1>
+        <Form.Group controlId="formUsername">
+          <Form.Control
+            className="text-center"
+            type="text"
+            placeholder="Enter Your username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          {/* code added here to display validation error */}
+          {usernameErr && <p>{usernameErr}</p>}
+        </Form.Group>
+        <Form.Group controlId="formPassword">
+          <Form.Control
+            style={{ marginTop: "15px" }}
+            className="text-center"
+            type="password"
+            placeholder="Enter Your Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {/* code added here to display validation error */}
+          {passwordErr && <p>{passwordErr}</p>}
+        </Form.Group>
+        <Form.Group controlId="formEmail">
+          <Form.Control
+            style={{ marginTop: "15px" }}
+            className="text-center"
+            type="email"
+            placeholder="Enter Your Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {/* code added here to display validation error */}
+          {emailErr && <p>{emailErr}</p>}
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+            style={{ marginTop: "15px" }}
+            className="text-center"
+            type="birthday"
+            placeholder="Enter your birthdate"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+          />
+          {/* code added here to display validation error */}
+          {birthdayErr && <p>{birthdayErr}</p>}
+        </Form.Group>
+        <Button
+          style={{ marginTop: "15px", width: "110px"}}
+          variant="dark"
+          type="submit"
+          onClick={handleSubmit}
+          className="button-one"
+        >
+          Register
+        </Button>
+      </Form>
+    </Col>
+  </Container>
+);
 }
 
 export default connect(mapStateToProps)(RegistrationView);

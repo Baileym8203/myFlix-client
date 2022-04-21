@@ -9,7 +9,7 @@ function VisibilityFilterInput(props) {
 return (
 <Col style={{display: "flex", justifyContent: "end", marginTop: "-5px"}}>
 <Form.Control
-style={{width: "500px", marginTop: "0.5em"}}
+style={{width: "450px", marginTop: "0.5em"}}
 onChange={e => props.setFilter(e.target.value)}
 value={props.visibilityFilter}
 placeholder="filter"

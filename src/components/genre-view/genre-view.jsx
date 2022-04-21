@@ -40,27 +40,32 @@ const {genre} = this.state;
 
 if(!genre) return <p>Not genre data</p>
 return (
-<Container>
-<Row>
-<Col key={genre._id}>
-<Card className="genres-view p-md-5 shadow-sm">
-<Row className="genre-card">
-<Card.Title className="genre-header">{genre.Name}</Card.Title>
-<Card.Body className="card-body p-md-3" style={{alignItems: 'center'}}>
-<Row className="genre-description">
-<span className="value mb-3">{genre.Description}</span>
-</Row>
-<Row>
-<Button className="m-1 align-content-center" variant="secondary"
-onClick={() => {onBackClick(null);}}>Back</Button>
-                   </Row>
-             </Card.Body>
-            </Row>
-         </Card>
-       </Col>
-     </Row>
-   </Container>
-  );
+  <Container fluid style={{ margin: "100px" }}>
+    <Col style={{ display: "flex", justifyContent: "center" }} key={genre._id}>
+      <Card className="p-md-5">
+        <Card.Title
+          style={{ fontWeight: 700, fontSize: "40px" }}
+          className="genre-header"
+        >
+          {genre.Name}
+        </Card.Title>
+        <Card.Body className="card-body">
+          <span style={{fontSize: "25px"}} className="value mb-3">{genre.Description}</span>
+
+          <Button
+            className="ml-4"
+            variant="dark"
+            onClick={() => {
+              onBackClick(null);
+            }}
+          >
+            Back
+          </Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  </Container>
+);
  }
 
 }

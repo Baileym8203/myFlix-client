@@ -62,27 +62,42 @@ export function ProfileView({ onUpdatedUserInfo }) {
   if (!user) return <p>Not user data</p>;
 
   return (
-      <Row>
-        <Col xl={12}>
+    <Container
+      fluid
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "0px",
+        marginTop: "25px",
+      }}
+    >
+      <Row
+        style={{
+          width: "100%",
+          padding: "0px",
+          margin: "50px",
+          backgroundColor: "white",
+        }}
+      >
+        <Col xl={6} style={{ padding: "0px" }}>
           <Card>
             <Card.Body>
               <UserInfo name={user.Username} email={user.Email} />
             </Card.Body>
           </Card>
         </Col>
-
-        <Col xl={12}>
+        <Col xl={6}>
+          <UpdateUser user={user} handleUpdate={handleUpdate} />
+        </Col>
+        <Col style={{ padding: "0px" }}>
           <Card>
             <Card.Body>
               <FavoriteMovies favoriteMoviesList={favoriteMoviesList} />
             </Card.Body>
           </Card>
         </Col>
-
-      <Col xl={12}>
-      <UpdateUser user={user} handleUpdate={handleUpdate} />
-      </Col>
       </Row>
+    </Container>
   );
 }
 

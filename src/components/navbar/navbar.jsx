@@ -15,7 +15,7 @@ if(typeof window == "undefined") {
 if (localStorage.getItem("token")) {
  return localStorage.getItem("token");
 } else {
- return false;
+ return  false;
  }
 };
 
@@ -32,28 +32,28 @@ return (
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="ml-auto">
-          {isAuth() && <Link to={`/users/${user}`}>{user}</Link>}
           {isAuth() && (
-            <Button
-              variant="link"
-              onClick={() => {
-                onLoggedOut();
-              }}
-              style={{ color: "black" }}
-            >
-              Logout
+            <Button variant="link">
+              <Link style={{ color: "black" }} to="/">
+                {" "}
+                Home
+              </Link>
             </Button>
           )}
           {
             <Button variant="link">
-              <Link style={{ color: "black" }} to="/">
+              <Link className="disappear" style={{ color: "black" }} to="/">
                 Sign-in
               </Link>
             </Button>
           }
           {
             <Button variant="link">
-              <Link style={{ color: "black" }} to="/register">
+              <Link
+                className="disappear"
+                style={{ color: "black" }}
+                to="/register"
+              >
                 Sign-up
               </Link>
             </Button>
@@ -64,6 +64,18 @@ return (
                 {" "}
                 My Profile
               </Link>
+            </Button>
+          )}
+          {isAuth() && <Link to={`/users/${user}`}>{user}</Link>}
+          {isAuth() && (
+            <Button
+              variant="link"
+              onClick={() => {
+                onLoggedOut();
+              }}
+              style={{ color: "black" }}
+            >
+              Logout
             </Button>
           )}
         </Nav>

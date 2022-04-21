@@ -12,15 +12,26 @@ export class MovieCard extends react.Component {
  const {movieData} = this.props;
  
  return (
-<Col style={{display: "flex", justifyContent: "center"}}>
-<Card style={{background: "none", border: "none"}} className='movie-image'>
-<Link to={`/movies/${movieData._id}`}>
-<Button variant="link">
-<Card.Img style={{boxShadow: "black 0px 5px 12px 6px"}} variant="top" src={movieData.ImagePath} className="img-fluid card-look"/>
-</Button>
-</Link>
-</Card>
-</Col>
- )
+   <Col style={{ display: "flex", justifyContent: "center" }}>
+     <Card
+       fluid
+       style={{ background: "none", border: "none", marginTop: "30px" }}
+       className="movie-image"
+     >
+       <Link fluid to={`/movies/${movieData._id}`}>
+         <Button fluid variant="link">
+           <Card.Img
+             fluid
+             style={{ boxShadow: "black 0px 5px 12px 6px", borderRadius: "5%" }}
+             variant="top"
+             src={movieData.ImagePath}
+             className="card-look"
+           />
+         </Button>
+       </Link>
+       <p className='text-center' style={{ color: "white" }}>{movieData.Title}</p>
+     </Card>
+   </Col>
+ );
  };
 }

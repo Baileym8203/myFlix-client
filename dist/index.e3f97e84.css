@@ -1,7 +1,9 @@
 .movie-image {
   padding: 5px;
-  margin: 5px;
+  margin: 30px;
+  margin-bottom: 70px;
   width: 250px;
+  height: 325px;
 }
 .movie-image Img {
   height: 325px;
@@ -9,34 +11,42 @@
 
 .movie-image:hover {
   transition: 0.9s;
-  filter: brightness(10%);
-  border: 100px;
-}
-
-.card-look:hover {
-  transition: 0.9s;
-  width: 1000px;
+  filter: brightness(10%) blur(2px);
 }
 .movie-card-view {
   margin-top: 5px;
   padding: 0px;
 }
 
+.--login-view {
+  background-color: white;
+  background-size: 100% 100%;
+  margin-top: 85px;
+  padding-bottom: 250px;
+  border-radius: 2%;
+}
 
+/* come back to this later */
 .button-one {
   margin-top: 10px;
 }
-.main-nav{
-background-color: rgba(255, 255, 255, 0.938);
+
+.--registration-view {
+  background-color: white;
+  background-size: 100% 100%;
+  margin-top: 85px;
+  padding-bottom: 250px;
+  border-radius: 2%;
 }
+.main-nav{
+background-color: rgba(255, 255, 255, 0.973);
+}
+
 
 .button-submit {
   margin-top: 10px;
 }
-body {
-  background: fixed no-repeat center center url("https://img.wallpapersafari.com/tablet/2560/1700/61/42/njWz8v.jpg");
-  background-size: cover;
-}
+
 .my-flix {
   color: steelblue;
 }

@@ -97,7 +97,7 @@ console.log(error);
         return (
           <Router>
             <MenuBar />
-              <Row className="" style={{margin: "0px", padding: "0px"}}>
+              <Row className="" style={{margin: "0px", paddingBottom: "0px"}}>
                 <Route
                   exact
                   path="/"
@@ -110,7 +110,9 @@ console.log(error);
   
                       );
                     return (
+                
                         <MoviesList movies={movies} />
+                   
                     );
                   }}
                 />
@@ -158,6 +160,7 @@ console.log(error);
                           movie={movies.find(
                             (m) => m._id === match.params.movieId
                           )}
+                          directorName={match.params.name}
                           onBackClick={() => history.goBack()}
                         />
                     );
