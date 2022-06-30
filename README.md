@@ -1,6 +1,6 @@
 # Best Movies
 ## Description
-A movie info app that uses a Baack-End API to load in all movie information
+A movie info app that uses a Back-End API to load in all movie information
 
 ## Key Features
 - A page where users can enter their user details to log in or create a profile using registration 
